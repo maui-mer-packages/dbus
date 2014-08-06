@@ -34,6 +34,7 @@ PkgBR:
 PkgConfigBR:
     - x11
     - systemd
+    - libsystemd
     - expat >= 1.95.5
 Configure: reconfigure
 ConfigOptions:
