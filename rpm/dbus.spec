@@ -32,6 +32,7 @@ BuildRequires:  gettext
 BuildRequires:  libcap-devel
 BuildRequires:  libtool
 BuildRequires:  xmlto
+BuildRequires:  systemd-libs
 
 %description
 D-Bus is a system for sending messages between applications. It is used both
