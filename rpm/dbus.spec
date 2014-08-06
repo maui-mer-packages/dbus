@@ -121,9 +121,9 @@ rm -rf %{buildroot}
 # >> install post
 mkdir -p %{buildroot}%{_datadir}/dbus-1/interfaces
 
-mkdir -p %{buildroot}%{_libdir}/systemd/user
-install -m0644 %{SOURCE1} %{buildroot}%{_libdir}/systemd/user/dbus.socket
-install -m0644 %{SOURCE2} %{buildroot}%{_libdir}/systemd/user/dbus.service
+mkdir -p %{buildroot}%{_userunitdir}
+install -m0644 %{SOURCE1} %{buildroot}%{_userunitdir}/dbus.socket
+install -m0644 %{SOURCE2} %{buildroot}%{_userunitdir}/dbus.service
 
 # << install post
 
