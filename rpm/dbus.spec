@@ -165,11 +165,6 @@ install -m0644 %{SOURCE2} %{buildroot}%{_userunitdir}/dbus.service
 %{_datadir}/dbus-1/interfaces
 %{_datadir}/dbus-1/services
 %{_datadir}/dbus-1/system-services
-%doc %{_mandir}/man1/dbus-cleanup-sockets.1.gz
-%doc %{_mandir}/man1/dbus-daemon.1.gz
-%doc %{_mandir}/man1/dbus-monitor.1.gz
-%doc %{_mandir}/man1/dbus-send.1.gz
-%doc %{_mandir}/man1/dbus-uuidgen.1.gz
 %ghost %dir /run/dbus
 %dir %{_localstatedir}/lib/dbus
 # >> files
