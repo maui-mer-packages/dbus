@@ -155,8 +155,8 @@ install -m0644 %{SOURCE2} %{buildroot}%{_userunitdir}/dbus.service
 %dir %{_sysconfdir}/dbus-1/system.d
 %dir /%{_prefix}/%{_lib}/dbus-1
 %{_userunitdir}/*
-%{_unitdir}/system/dbus.service
-%{_unitdir}/system/dbus.socket
+%{_unitdir}/dbus.service
+%{_unitdir}/dbus.socket
 %{_unitdir}/dbus.target.wants/dbus.socket
 %{_unitdir}/multi-user.target.wants/dbus.service
 %{_unitdir}/sockets.target.wants/dbus.socket
