@@ -27,7 +27,6 @@ RequiresPreUn:
 RequiresPostUn:
     - systemd
 PkgBR:
-    - expat-devel >= 1.95.5
     - gettext
     - libcap-devel
     - libtool
@@ -35,6 +34,7 @@ PkgBR:
 PkgConfigBR:
     - x11
     - systemd
+    - expat >= 1.95.5
 Configure: reconfigure
 ConfigOptions:
     - --libexecdir=%{_libdir}/dbus-1

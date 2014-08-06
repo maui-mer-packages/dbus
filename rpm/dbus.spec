@@ -27,7 +27,7 @@ Requires(post): systemd
 Requires(postun): systemd
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(systemd)
-BuildRequires:  expat-devel >= 1.95.5
+BuildRequires:  pkgconfig(expat) >= 1.95.5
 BuildRequires:  gettext
 BuildRequires:  libcap-devel
 BuildRequires:  libtool
