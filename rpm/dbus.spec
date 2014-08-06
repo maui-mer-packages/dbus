@@ -126,6 +126,9 @@ mkdir -p %{buildroot}%{_userunitdir}
 install -m0644 %{SOURCE1} %{buildroot}%{_userunitdir}/dbus.socket
 install -m0644 %{SOURCE2} %{buildroot}%{_userunitdir}/dbus.service
 
+# Move /var/run to /
+mv %{buildroot}%{_localstatedir}/run %{buildroot}/run
+
 # << install post
 
 %pre
