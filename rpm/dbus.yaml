@@ -20,12 +20,17 @@ Requires:
     - "%{name}-libs = %{version}"
 RequiresPre:
     - /usr/sbin/useradd
+RequiresPost:
+    - systemd
+RequiresPreUn:
+    - systemd
+RequiresPostUn:
+    - systemd
 PkgBR:
     - expat-devel >= 1.95.5
     - gettext
     - libcap-devel
     - libtool
-    - systemd-devel
     - xmlto
 PkgConfigBR:
     - x11
@@ -46,7 +51,7 @@ ConfigOptions:
     - --with-system-socket=/run/dbus/system_bus_socket
     - --with-console-auth-dir=/run/console/
     - --with-dbus-user=dbus
-    - --with-systemdsystemunitdir="%{_libdir}/systemd/system"
+    - --with-systemdsystemunitdir="%{_unitdir}"
     - --enable-systemd
     - --enable-inotify
 Builder: make
@@ -63,12 +68,12 @@ Files:
     - "%config(noreplace) %{_sysconfdir}/dbus-1/system.conf"
     - "%dir %{_sysconfdir}/dbus-1/system.d"
     - "%dir /%{_prefix}/%{_lib}/dbus-1"
-    - "%{_libdir}/systemd/user/*"
-    - "%{_libdir}/systemd/system/dbus.service"
-    - "%{_libdir}/systemd/system/dbus.socket"
-    - "%{_libdir}/systemd/system/dbus.target.wants/dbus.socket"
-    - "%{_libdir}/systemd/system/multi-user.target.wants/dbus.service"
-    - "%{_libdir}/systemd/system/sockets.target.wants/dbus.socket"
+    - "%{_userunitdir}/*"
+    - "%{_unitdir}/system/dbus.service"
+    - "%{_unitdir}/system/dbus.socket"
+    - "%{_unitdir}/dbus.target.wants/dbus.socket"
+    - "%{_unitdir}/multi-user.target.wants/dbus.service"
+    - "%{_unitdir}/sockets.target.wants/dbus.socket"
 # See doc/system-activation.txt in source tarball for the rationale behind
 # these permissions
     - "%attr(4750,root,dbus) %{_libdir}/dbus-1/dbus-daemon-launch-helper"

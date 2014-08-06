@@ -22,13 +22,15 @@ Source100:  dbus.yaml
 Patch0:     ensure-machine-id-in-start.patch
 Requires:   %{name}-libs = %{version}
 Requires(pre): /usr/sbin/useradd
+Requires(preun): systemd
+Requires(post): systemd
+Requires(postun): systemd
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  expat-devel >= 1.95.5
 BuildRequires:  gettext
 BuildRequires:  libcap-devel
 BuildRequires:  libtool
-BuildRequires:  systemd-devel
 BuildRequires:  xmlto
 
 %description
@@ -101,7 +103,7 @@ separate package so server systems need not install X.
     --with-system-socket=/run/dbus/system_bus_socket \
     --with-console-auth-dir=/run/console/ \
     --with-dbus-user=dbus \
-    --with-systemdsystemunitdir="%{_libdir}/systemd/system" \
+    --with-systemdsystemunitdir="%{_unitdir}" \
     --enable-systemd \
     --enable-inotify
 
@@ -151,12 +153,12 @@ install -m0644 %{SOURCE2} %{buildroot}%{_libdir}/systemd/user/dbus.service
 %config(noreplace) %{_sysconfdir}/dbus-1/system.conf
 %dir %{_sysconfdir}/dbus-1/system.d
 %dir /%{_prefix}/%{_lib}/dbus-1
-%{_libdir}/systemd/user/*
-%{_libdir}/systemd/system/dbus.service
-%{_libdir}/systemd/system/dbus.socket
-%{_libdir}/systemd/system/dbus.target.wants/dbus.socket
-%{_libdir}/systemd/system/multi-user.target.wants/dbus.service
-%{_libdir}/systemd/system/sockets.target.wants/dbus.socket
+%{_userunitdir}/*
+%{_unitdir}/system/dbus.service
+%{_unitdir}/system/dbus.socket
+%{_unitdir}/dbus.target.wants/dbus.socket
+%{_unitdir}/multi-user.target.wants/dbus.service
+%{_unitdir}/sockets.target.wants/dbus.socket
 %attr(4750,root,dbus) %{_libdir}/dbus-1/dbus-daemon-launch-helper
 %dir %{_datadir}/dbus-1
 %{_datadir}/dbus-1/interfaces
