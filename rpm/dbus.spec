@@ -10,7 +10,7 @@ Name:       dbus
 # << macros
 
 Summary:    D-Bus message bus
-Version:    1.8.4
+Version:    1.8.6
 Release:    1
 Group:      System/Libraries
 License:    GPLv2+ or AFL
