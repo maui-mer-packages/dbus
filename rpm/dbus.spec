@@ -144,6 +144,7 @@ rm -fr %{buildroot}%{_datadir}/doc/dbus/
 %{_bindir}/dbus-monitor
 %{_bindir}/dbus-send
 %{_bindir}/dbus-uuidgen
+%{_bindir}/dbus-run-session
 %dir %{_sysconfdir}/dbus-1
 %config(noreplace) %{_sysconfdir}/dbus-1/session.conf
 %dir %{_sysconfdir}/dbus-1/session.d
