@@ -119,4 +119,4 @@ SubPackages:
           separate package so server systems need not install X.
       Files:
           - "%{_bindir}/dbus-launch"
-          - "%doc %{_mandir}/man1/dbus-launch.1.gz"
+          #- "%doc %{_mandir}/man1/dbus-launch.1.gz"

@@ -185,6 +185,5 @@ rm -fr %{buildroot}%{_datadir}/doc/dbus/
 %files x11
 %defattr(-,root,root,-)
 %{_bindir}/dbus-launch
-%doc %{_mandir}/man1/dbus-launch.1.gz
 # >> files x11
 # << files x11
