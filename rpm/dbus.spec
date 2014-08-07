@@ -49,16 +49,6 @@ Requires(postun): /sbin/ldconfig
 %description libs
 Lowlevel libraries for accessing D-Bus.
 
-%package doc
-Summary:    Developer documentation for D-Bus
-Group:      Documentation
-Requires:   %{name} = %{version}-%{release}
-
-%description doc
-This package contains DevHelp developer documentation for D-Bus along with
-other supporting documentation such as the introspect dtd file.
-
-
 %package devel
 Summary:    Libraries and headers for D-Bus
 Group:      Development/Libraries
@@ -129,6 +119,9 @@ install -m0644 %{SOURCE2} %{buildroot}%{_userunitdir}/dbus.service
 # Move /var/run to /
 mv %{buildroot}%{_localstatedir}/run %{buildroot}/run
 
+# Remove documentation
+rm -fr %{buildroot}%{_datadir}/doc/dbus/
+
 # << install post
 
 %pre
@@ -178,25 +171,6 @@ mv %{buildroot}%{_localstatedir}/run %{buildroot}/run
 %{_libdir}/libdbus-1.so.3*
 # >> files libs
 # << files libs
-
-%files doc
-%defattr(-,root,root,-)
-%doc doc/dbus-faq.html
-%doc doc/dbus-specification.html
-%doc doc/dbus-test-plan.html
-%doc doc/dbus-tutorial.html
-%doc doc/introspect.dtd
-%doc doc/introspect.xsl
-%doc doc/system-activation.txt
-%doc %{_datadir}/doc/dbus/dbus-faq.html
-%doc %{_datadir}/doc/dbus/dbus-specification.html
-%doc %{_datadir}/doc/dbus/dbus-test-plan.html
-%doc %{_datadir}/doc/dbus/dbus-tutorial.html
-%doc %{_datadir}/doc/dbus/diagram.png
-%doc %{_datadir}/doc/dbus/diagram.svg
-%doc %{_datadir}/doc/dbus/system-activation.txt
-# >> files doc
-# << files doc
 
 %files devel
 %defattr(-,root,root,-)

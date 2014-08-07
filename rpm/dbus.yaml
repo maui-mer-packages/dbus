@@ -98,28 +98,6 @@ SubPackages:
       Files:
           - "%{_libdir}/libdbus-1.so.3*"
 
-    - Name: doc
-      Summary: Developer documentation for D-Bus
-      Group: Documentation
-      Description: |
-          This package contains DevHelp developer documentation for D-Bus along with
-          other supporting documentation such as the introspect dtd file.
-      Files:
-          - "%doc doc/dbus-faq.html"
-          - "%doc doc/dbus-specification.html"
-          - "%doc doc/dbus-test-plan.html"
-          - "%doc doc/dbus-tutorial.html"
-          - "%doc doc/introspect.dtd"
-          - "%doc doc/introspect.xsl"
-          - "%doc doc/system-activation.txt"
-          - "%doc %{_datadir}/doc/dbus/dbus-faq.html"
-          - "%doc %{_datadir}/doc/dbus/dbus-specification.html"
-          - "%doc %{_datadir}/doc/dbus/dbus-test-plan.html"
-          - "%doc %{_datadir}/doc/dbus/dbus-tutorial.html"
-          - "%doc %{_datadir}/doc/dbus/diagram.png"
-          - "%doc %{_datadir}/doc/dbus/diagram.svg"
-          - "%doc %{_datadir}/doc/dbus/system-activation.txt"
-
     - Name: devel
       Summary: Libraries and headers for D-Bus
       Group: Development/Libraries
