@@ -21,6 +21,7 @@ Source2:    dbus-user.service
 Source100:  dbus.yaml
 Patch0:     ensure-machine-id-in-start.patch
 Requires:   %{name}-libs = %{version}
+Requires:   systemd
 Requires(pre): /usr/sbin/useradd
 Requires(preun): systemd
 Requires(post): systemd
@@ -81,6 +82,8 @@ separate package so server systems need not install X.
 # << build pre
 
 %reconfigure --disable-static \
+    --exec-prefix=/ \
+    --bindir=/bin \
     --libexecdir=%{_libdir}/dbus-1 \
     --sysconfdir=%{_sysconfdir} \
     --disable-tests \
@@ -132,6 +135,18 @@ rm -fr %{buildroot}%{_datadir}/doc/dbus/
 -g %{dbus_user_uid} -s /sbin/nologin -r -d '/' dbus 2> /dev/null || :
 # << pre
 
+%preun
+if [ "$1" -eq 0 ]; then
+systemctl stop dbus.service
+fi
+
+%post
+systemctl daemon-reload
+systemctl reload-or-try-restart dbus.service
+
+%postun
+systemctl daemon-reload
+
 %post libs -p /sbin/ldconfig
 
 %postun libs -p /sbin/ldconfig
@@ -139,12 +154,12 @@ rm -fr %{buildroot}%{_datadir}/doc/dbus/
 %files
 %defattr(-,root,root,-)
 %doc COPYING
-%{_bindir}/dbus-cleanup-sockets
-%{_bindir}/dbus-daemon
-%{_bindir}/dbus-monitor
-%{_bindir}/dbus-send
-%{_bindir}/dbus-uuidgen
-%{_bindir}/dbus-run-session
+/bin/dbus-cleanup-sockets
+/bin/dbus-daemon
+/bin/dbus-monitor
+/bin/dbus-send
+/bin/dbus-uuidgen
+/bin/dbus-run-session
 %dir %{_sysconfdir}/dbus-1
 %config(noreplace) %{_sysconfdir}/dbus-1/session.conf
 %dir %{_sysconfdir}/dbus-1/session.d

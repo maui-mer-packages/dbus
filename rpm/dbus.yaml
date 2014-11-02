@@ -38,6 +38,8 @@ PkgConfigBR:
     - expat >= 1.95.5
 Configure: reconfigure
 ConfigOptions:
+    - --exec-prefix=/
+    - --bindir=/bin
     - --libexecdir=%{_libdir}/dbus-1
     - --sysconfdir=%{_sysconfdir}
     - --disable-tests
@@ -58,12 +60,12 @@ ConfigOptions:
 Builder: make
 Files:
     - "%doc COPYING"
-    - "%{_bindir}/dbus-cleanup-sockets"
-    - "%{_bindir}/dbus-daemon"
-    - "%{_bindir}/dbus-monitor"
-    - "%{_bindir}/dbus-send"
-    - "%{_bindir}/dbus-uuidgen"
-    - "%{_bindir}/dbus-run-session"
+    - "/bin/dbus-cleanup-sockets"
+    - "/bin/dbus-daemon"
+    - "/bin/dbus-monitor"
+    - "/bin/dbus-send"
+    - "/bin/dbus-uuidgen"
+    - "/bin/dbus-run-session"
     - "%dir %{_sysconfdir}/dbus-1"
     - "%config(noreplace) %{_sysconfdir}/dbus-1/session.conf"
     - "%dir %{_sysconfdir}/dbus-1/session.d"
