@@ -117,6 +117,9 @@ rm -rf %{buildroot}
 %make_install
 
 # >> install post
+mkdir -p %{buildroot}%{_bindir}
+mv -f %{buildroot}/bin/dbus-launch %{buildroot}%{_bindir}
+
 mkdir -p %{buildroot}%{_datadir}/dbus-1/interfaces
 
 mkdir -p %{buildroot}%{_userunitdir}
