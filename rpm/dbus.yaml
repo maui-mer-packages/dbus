@@ -76,7 +76,7 @@ Files:
     - "%{_unitdir}/dbus.service"
     - "%{_unitdir}/dbus.socket"
     - "%{_unitdir}/dbus.target.wants/dbus.socket"
-    - "%{_unitdir}/multi-user.target.wants/dbus.service"
+    - "%{_unitdir}/basic.target.wants/dbus.service"
     - "%{_unitdir}/sockets.target.wants/dbus.socket"
 # See doc/system-activation.txt in source tarball for the rationale behind
 # these permissions

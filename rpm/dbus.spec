@@ -79,6 +79,10 @@ separate package so server systems need not install X.
 
 %build
 # >> build pre
+
+# Start dbus earlier
+sed -i 's,multi-user.target.wants,basic.target.wants,g' bus/Makefile.am
+
 # << build pre
 
 %reconfigure --disable-static \
@@ -170,7 +174,7 @@ systemctl daemon-reload
 %{_unitdir}/dbus.service
 %{_unitdir}/dbus.socket
 %{_unitdir}/dbus.target.wants/dbus.socket
-%{_unitdir}/multi-user.target.wants/dbus.service
+%{_unitdir}/basic.target.wants/dbus.service
 %{_unitdir}/sockets.target.wants/dbus.socket
 %attr(4750,root,dbus) %{_libdir}/dbus-1/dbus-daemon-launch-helper
 %dir %{_datadir}/dbus-1
