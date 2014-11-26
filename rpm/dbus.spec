@@ -18,6 +18,8 @@ URL:        http://www.freedesktop.org/software/dbus/
 Source0:    %{name}-%{version}.tar.xz
 Source1:    dbus-user.socket
 Source2:    dbus-user.service
+Source3:    dbus.service.in
+Source4:    dbus.socket.in
 Source100:  dbus.yaml
 Patch0:     ensure-machine-id-in-start.patch
 Requires:   %{name}-libs = %{version}
@@ -82,6 +84,11 @@ separate package so server systems need not install X.
 
 # Start dbus earlier
 sed -i 's,multi-user.target.wants,basic.target.wants,g' bus/Makefile.am
+
+# Configuration from Mer, without this services such as
+# sensord or mce won't work
+cp %{SOURCE3} bus
+cp %{SOURCE4} bus
 
 # << build pre
 
